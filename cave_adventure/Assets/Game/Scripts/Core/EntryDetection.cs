@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntryDetection : MonoBehaviour
+namespace RPG.Core
 {
-    private void OnTriggerEnter(Collider other)
+    public class EntryDetection : MonoBehaviour
     {
-        print("from ontrigger Enter : " + other.gameObject.tag);
-        if (other.gameObject.tag == "Player")
+        private void OnTriggerEnter(Collider other)
         {
-            print("Go To Battle Zone");
+            if (other.gameObject.tag == "Player")
+            {
+                Debug.Log("Go To Battle Zone");
+            }
         }
     }
 }

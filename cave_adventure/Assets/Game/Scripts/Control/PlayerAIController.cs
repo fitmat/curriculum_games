@@ -93,7 +93,10 @@ namespace RPG.Control
             }
             else if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
             {
-                navMeshAgent.isStopped = true;
+                if (navMeshAgent.isActiveAndEnabled)
+                {
+                    navMeshAgent.isStopped = true;
+                }
             }
         }
 

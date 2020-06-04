@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3102994523893226773}
   - component: {fileID: 4585652309818733580}
   - component: {fileID: 3864631004853987275}
+  - component: {fileID: 2819384737589035714}
   m_Layer: 0
   m_Name: PlayerAI
   m_TagString: Player
@@ -119,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 6
+  playerfollower: {fileID: 0}
+  character: {fileID: 0}
 --- !u!95 &367216457046780838
 Animator:
   serializedVersion: 3
@@ -237,6 +240,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2819384737589035714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367216457620345892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 
 --- !u!1 &3241113419406824368
 GameObject:
   m_ObjectHideFlags: 0
