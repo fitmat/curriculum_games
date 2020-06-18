@@ -26,10 +26,12 @@ namespace RPG.Combat
             if (!GetIsInRange())
             {
                 GetComponent<CreateMover>().MoveTo(target.transform.position, combatModeMoveSpeed);
+                //GetComponent<EnemyMover>().MoveTo(target.transform.position, combatModeMoveSpeed);
             }
             else
             {
                 GetComponent<CreateMover>().Cancel();
+                //GetComponent<EnemyMover>().Cancel();
                 AttackBehavouir();
             }
         }
@@ -82,6 +84,7 @@ namespace RPG.Combat
             TriggerStopAttack();
             target = null;
             GetComponent<CreateMover>().Cancel();
+            //GetComponent<EnemyMover>().Cancel();
         }
 
         private void TriggerStopAttack()

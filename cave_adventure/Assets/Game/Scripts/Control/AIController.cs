@@ -1,9 +1,9 @@
-﻿using RPG.Combat;
+﻿//using RPG.Combat;
+using RPG.Combat;
 using RPG.Core;
+using RPG.Enemy;
 using RPG.Movement;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Control
@@ -13,15 +13,18 @@ namespace RPG.Control
         // variables hierarchy
         [SerializeField] float chaseDistance = 5f;
         [SerializeField] float suspicionTime = 5f;
+        [SerializeField] float timeBetAttacks = 10f;
+
         [SerializeField] PetrolPath petrolPath = null;
+
         [SerializeField] float WaypointTolerance = 1f;
         [SerializeField] float WaypointSwellTime = 3f;
         [Range(0, 1)]
         [SerializeField] float petrolSpeedFraction = 0.2f;
 
-        Fighter fighter;
-        Health health;
-        CreateMover mover;
+        //Fighter fighter;
+        EnemyHealth health;
+        EnemyMover mover;
         GameObject player;
 
         Vector3 guardPosition;
@@ -29,32 +32,27 @@ namespace RPG.Control
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         int currentWaypointIndex = 0;
 
+        float timeSinceLastAttack = Mathf.Infinity;
+
         private void Start()
         {
-            fighter = GetComponent<Fighter>();
-            health = GetComponent<Health>();
+            //fighter = GetComponent<Fighter>();
+            health = GetComponent<EnemyHealth>();
             player = GameObject.FindWithTag("Player");
-            mover = GetComponent<CreateMover>(); ;
+            mover = GetComponent<EnemyMover>();
 
             guardPosition = transform.position;
         }
 
         private void Update()
         {
+            timeSinceLastAttack += Time.deltaTime;
+
             if (health.IsDead()) return;
 
-            if (InAttackRangeOfPlayer() && fighter.CanAttack(player))
-            {
-                AttackBehaviour();
-            }
-            else if (timeSinceLastSawPlayer < suspicionTime)
-            {
-                SuspicionBehaviour();
-            }
-            else
-            {
-                PetrolBehaviour();
-            }
+            // AttackBehaviour();
+
+            PetrolBehaviour();
 
             UpdateTimers();
         }
@@ -73,15 +71,19 @@ namespace RPG.Control
             {
                 if (AtWaypoint())
                 {
+                    AttackBehavouir();
+
                     timeSinceArrivedAtWaypoint = 0;
                     CycleWayPoint();
+                        
+                    // do when enemy is in front of the player
                 }
                 nextPosition = GetCurrentWaypoint();
             }
 
             if (timeSinceArrivedAtWaypoint > WaypointSwellTime)
             {
-                mover.StartMoveAction(nextPosition, petrolSpeedFraction);
+                mover.StartMoveAction(nextPosition);
             }
         }
 
@@ -106,10 +108,21 @@ namespace RPG.Control
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
-        private void AttackBehaviour()
+        private void AttackBehavouir()
         {
-            timeSinceLastSawPlayer = 0;
-            fighter.Attack(player);
+            transform.LookAt(player.transform);
+            if (timeSinceLastAttack > timeBetAttacks)
+            {
+                // this will trigger the Hit() event
+                TriggerAttack();
+                timeSinceLastAttack = 0;
+            }
+        }
+
+        private void TriggerAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("stopAttack");
+            GetComponent<Animator>().SetTrigger("attack");
         }
 
         private bool InAttackRangeOfPlayer ()
@@ -123,6 +136,12 @@ namespace RPG.Control
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
+        }
+
+        private void TriggerStopAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("stopAttack");
         }
     }
 }

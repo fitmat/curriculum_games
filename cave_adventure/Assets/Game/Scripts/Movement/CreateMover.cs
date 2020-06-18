@@ -1,10 +1,6 @@
 ﻿using Cinemachine;
 using RPG.Core;
 using RPG.Saving;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,7 +10,6 @@ namespace RPG.Movement
     {
         // variables hierarchy
         [SerializeField] float maxSpeed = 10f;
-        [SerializeField] CinemachineVirtualCamera playerfollower;
         [SerializeField] GameObject character;
 
         NavMeshAgent navMeshAgent;
@@ -71,29 +66,40 @@ namespace RPG.Movement
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 navMeshAgent.enabled = false;
-                //playerfollower.enabled = false;
 
                 playerBody.isKinematic = false;
                 playerBody.useGravity = true;
-                //playerBody.AddForce(new Vector3(0f, 5f, 5f), ForceMode.Impulse);
 
-                float zFactor = Mathf.Clamp01(transform.position.z);
-                float xFactor = Mathf.Clamp01(transform.position.x);
+                Vector3 jumpDir = new Vector3(0f, 1f, 1f) * 5f;
 
                 TriggerJump();
-                playerBody.AddForce(new Vector3(xFactor, 5f, zFactor * 5f), ForceMode.Impulse);
+                playerBody.AddRelativeForce(jumpDir, ForceMode.Impulse);
 
                 Invoke("EnableNavAgent", 1f);
             }
+        }
+
+        public void JumpClick()
+        {
+            navMeshAgent.enabled = false;
+
+            playerBody.isKinematic = false;
+            playerBody.useGravity = true;
+
+            Vector3 jumpDir = new Vector3(0f, 1f, 1f) * 5f;
+
+            TriggerJump();
+            playerBody.AddRelativeForce(jumpDir, ForceMode.Impulse);
+
+            Invoke("EnableNavAgent", 1f);
         }
 
         private void EnableNavAgent()
         {
             playerBody.isKinematic = true;
             playerBody.useGravity = false;
-
-            //playerfollower.enabled = true;
             navMeshAgent.enabled = true;
+            navMeshAgent.ResetPath();
         }
 
         private void TriggerJump()

@@ -1,8 +1,6 @@
 ﻿using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,6 +15,8 @@ namespace RPG.Control
         [SerializeField] float WaypointTolerance = 1f;
         [Range(0, 1)]
         [SerializeField] float petrolSpeedFraction = 0.2f;
+
+        public bool runToggle = false;
 
         Fighter fighter;
         Health health;
@@ -98,6 +98,19 @@ namespace RPG.Control
                     navMeshAgent.isStopped = true;
                 }
             }
+
+            /*if (runToggle)
+            {
+                navMeshAgent.isStopped = false;
+                mover.StartMoveAction(nextPosition, petrolSpeedFraction);
+            }
+            else if (!runToggle)
+            {
+                if (navMeshAgent.isActiveAndEnabled)
+                {
+                    navMeshAgent.isStopped = true;
+                }
+            } */
         }
 
         private bool AtWaypoint()
@@ -131,7 +144,7 @@ namespace RPG.Control
         {
             traveledDistance += Vector3.Distance(transform.position, lastPosition);
             lastPosition = transform.position;
-            //print("travelDist : " + (int)traveledDistance);
+            //Debug.Log("travelDist : " + (int)traveledDistance);
         }
 
         /*private bool InAttackRangeOfEnemy()

@@ -28,7 +28,9 @@ namespace RPG.SceneManagement
         {
             if (other.gameObject.tag == "Player")
             {
-                StartCoroutine(Transition());
+                //StartCoroutine(Transition());
+
+                SceneManager.LoadScene(SceneToLoad);
             }
         }
 
@@ -47,24 +49,24 @@ namespace RPG.SceneManagement
 
             yield return fader.FadeOut(fadeOutTime);
 
-            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
-            wrapper.Save();
+            //SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
+            //wrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(SceneToLoad);
 
-            wrapper.Load();
+            //wrapper.Load();
 
             // after new scene loads
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
 
-            wrapper.Save();
+            //wrapper.Save();
 
             yield return new WaitForSeconds(fadeWaitTime);
             Debug.Log("next line is fader.faderin;");
             yield return fader.FadeIn(fadeInTime);
 
-            Destroy(gameObject, 2f);
+            Destroy(gameObject);
         }
 
         private void UpdatePlayer(Portal otherPortal)
