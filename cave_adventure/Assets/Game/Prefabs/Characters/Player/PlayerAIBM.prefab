@@ -211,7 +211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 6
-  playerfollower: {fileID: 0}
   character: {fileID: 1815925843215926282}
 --- !u!95 &2031038638407650378
 Animator:
@@ -504,6 +503,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841855885291467137, guid: 13071ab649147b34cb5473c5e97b20c5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.13052616
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841855885291467137, guid: 13071ab649147b34cb5473c5e97b20c5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841855885291467137, guid: 13071ab649147b34cb5473c5e97b20c5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841855885291467137, guid: 13071ab649147b34cb5473c5e97b20c5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9914449
       objectReference: {fileID: 0}
     - target: {fileID: 6841855885515337702, guid: 13071ab649147b34cb5473c5e97b20c5,
         type: 3}

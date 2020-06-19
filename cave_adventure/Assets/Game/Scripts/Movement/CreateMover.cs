@@ -70,9 +70,9 @@ namespace RPG.Movement
                 playerBody.isKinematic = false;
                 playerBody.useGravity = true;
 
+                TriggerJump();
                 Vector3 jumpDir = new Vector3(0f, 1f, 1f) * 5f;
 
-                TriggerJump();
                 playerBody.AddRelativeForce(jumpDir, ForceMode.Impulse);
 
                 Invoke("EnableNavAgent", 1f);
@@ -106,11 +106,13 @@ namespace RPG.Movement
         {
             GetComponent<Animator>().SetTrigger("jump");
             GetComponent<Animator>().ResetTrigger("stopJump");
+            //GetComponent<Animator>().SetTrigger("animation_4");
         }
 
         private void TriggerStopJump()
         {
             GetComponent<Animator>().ResetTrigger("jump");
+            //GetComponent<Animator>().ResetTrigger("animation_4");
             GetComponent<Animator>().SetTrigger("stopJump");
         }
 
