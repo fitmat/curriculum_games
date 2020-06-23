@@ -1,9 +1,8 @@
 ﻿using RPG.Control;
 using RPG.Core;
 using RPG.Movement;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RPG.CanvasUI
 {
@@ -47,6 +46,61 @@ namespace RPG.CanvasUI
         public void jumpB()
         {
             cm.JumpClick();
+        }
+
+        public void EnvironmentOne()
+        {
+            SceneManager.LoadScene(1);
+        }
+
+        public void EnvironmentTwo()
+        {
+            SceneManager.LoadScene(2);
+        }
+
+        public void EnvironmentThree()
+        {
+            SceneManager.LoadScene(3);
+        }
+
+        public void EnvironmentFour()
+        {
+            SceneManager.LoadScene(4);
+        }
+
+        public void EnvironmentFive()
+        {
+            SceneManager.LoadScene(5);
+        }
+
+        public void EnvironmentSix()
+        {
+            SceneManager.LoadScene(6);
+        }
+
+        public void EnvironmentSeven()
+        {
+            SceneManager.LoadScene(7);
+        }
+
+        public void EnvironmentEight()
+        {
+            SceneManager.LoadScene(8);
+        }
+
+        public void EnvironmentNine()
+        {
+            SceneManager.LoadScene(9);
+        }
+
+        public void EnvironmentTen()
+        {
+            SceneManager.LoadScene(10);
+        }
+
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

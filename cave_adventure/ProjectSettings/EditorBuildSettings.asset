@@ -6,21 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game/Scenes/SandBox 1.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Game/Scenes/EnvironmentSelection.unity
+    guid: 35f2ab7221fae2e44b49139e18ad4062
   - enabled: 1
-    path: Assets/Game/Scenes/BattleZone 1.unity
-    guid: 0c0c44358ee838b4e9bb5ea5b18f352f
+    path: Assets/Game/Scenes/EnvironmentScenes/EnOne.unity
+    guid: 4f4478ea69f68f54c88646ba8fed9ca7
   - enabled: 1
-    path: Assets/Game/Scenes/SandBox 2.unity
-    guid: 86481658148b84e4e84d1e0678f382a9
+    path: Assets/Game/Scenes/EnvironmentScenes/EnTwo.unity
+    guid: 104ec4d1adc27554fb5027eacd206670
   - enabled: 1
-    path: Assets/Game/Scenes/BattleZone 2.unity
-    guid: 5de1712284f870243a9ff8d50c72bd38
+    path: Assets/Game/Scenes/EnvironmentScenes/EnThree.unity
+    guid: 700d3230502c155409edd06b16a234fc
   - enabled: 1
-    path: Assets/Game/Scenes/SandBox 3.unity
-    guid: f7eda0d322aac4644823f3a895bd0847
+    path: Assets/Game/Scenes/EnvironmentScenes/EnFour.unity
+    guid: 1e9f82848ba724d4786747e68fe87530
   - enabled: 1
-    path: Assets/Game/Scenes/Victory Zone.unity
-    guid: 941cfac3515bac04ba4d057ea46b972a
+    path: Assets/Game/Scenes/EnvironmentScenes/EnFive.unity
+    guid: 43fa20871a3bc8c429b5fc3fce170e8a
+  - enabled: 1
+    path: Assets/Game/Scenes/EnvironmentScenes/EnSix.unity
+    guid: 4d032fe81c098a24cac97cade6f86eea
+  - enabled: 1
+    path: Assets/Game/Scenes/EnvironmentScenes/EnSeven.unity
+    guid: a876423280fa94f48b8bae1a7f655c08
+  - enabled: 1
+    path: Assets/Game/Scenes/EnvironmentScenes/EnEight.unity
+    guid: 06a0407ac588b0944a5136633530a3ed
+  - enabled: 1
+    path: Assets/Game/Scenes/EnvironmentScenes/EnNine.unity
+    guid: e52f9d0e8d7649941baeaff4426ca741
+  - enabled: 1
+    path: Assets/Game/Scenes/EnvironmentScenes/EnTen.unity
+    guid: fa305e99b39b5894bb3988fbc783543e
   m_configObjects: {}

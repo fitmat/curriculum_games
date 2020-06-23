@@ -3,6 +3,7 @@ using RPG.Core;
 using RPG.Movement;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace RPG.Control
 {
@@ -15,6 +16,8 @@ namespace RPG.Control
         [SerializeField] float WaypointTolerance = 1f;
         [Range(0, 1)]
         [SerializeField] float petrolSpeedFraction = 0.2f;
+
+        [SerializeField] Text TraveledDistance;
 
         public bool runToggle = false;
 
@@ -32,6 +35,8 @@ namespace RPG.Control
 
         float traveledDistance = 0;
         Vector3 lastPosition;
+
+        bool runAnimation = false;
 
         private void Start()
         {
@@ -86,12 +91,12 @@ namespace RPG.Control
                 nextPosition = GetCurrentWaypoint();
             }
 
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || runToggle)
             {
                 navMeshAgent.isStopped = false;
                 mover.StartMoveAction(nextPosition, petrolSpeedFraction);
             }
-            else if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
+            else if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W) || !runToggle)
             {
                 if (navMeshAgent.isActiveAndEnabled)
                 {
@@ -144,7 +149,7 @@ namespace RPG.Control
         {
             traveledDistance += Vector3.Distance(transform.position, lastPosition);
             lastPosition = transform.position;
-            //Debug.Log("travelDist : " + (int)traveledDistance);
+            TraveledDistance.text = "Distance Traveled : " + (int)traveledDistance;
         }
 
         /*private bool InAttackRangeOfEnemy()

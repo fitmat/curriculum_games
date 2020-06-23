@@ -59,6 +59,7 @@ namespace RPG.Movement
 
             float speed = localVelocity.z;
             GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
+
         }
 
         private void JumpAbility()
@@ -104,15 +105,15 @@ namespace RPG.Movement
 
         private void TriggerJump()
         {
+            //GetComponent<Animator>().SetTrigger("animation_4");
             GetComponent<Animator>().SetTrigger("jump");
             GetComponent<Animator>().ResetTrigger("stopJump");
-            //GetComponent<Animator>().SetTrigger("animation_4");
         }
 
         private void TriggerStopJump()
         {
-            GetComponent<Animator>().ResetTrigger("jump");
             //GetComponent<Animator>().ResetTrigger("animation_4");
+            GetComponent<Animator>().ResetTrigger("jump");
             GetComponent<Animator>().SetTrigger("stopJump");
         }
 
