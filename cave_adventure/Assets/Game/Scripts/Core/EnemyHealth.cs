@@ -45,7 +45,7 @@ namespace RPG.Core
 
             if (healthPoints == 0)
             {
-                pb.ChangeEnemy();
+                pb.ChangeEnemyAttack();
                 Die();
             }
         }
